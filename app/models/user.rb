@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   validates_uniqueness_of :code, :authentication_token
+  validates_presence_of :code
 
   def to_param
     code
