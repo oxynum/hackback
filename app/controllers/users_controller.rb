@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def authenticate
     user = User.where(code: params[:user_id]).first
+    render status: :unauthorized and return if user.nil?
     user.generate_token
     user.ip_address = request.remote_ip
     user.save

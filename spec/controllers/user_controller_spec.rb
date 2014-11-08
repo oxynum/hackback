@@ -6,7 +6,7 @@ describe UsersController, type: :controller do
     end
 
     it 'return the JSON object representing the user' do 
-      get :authenticate, user_id: 'foo'
+      post :authenticate, user_id: 'foo'
       expect(response)
     end
   end
