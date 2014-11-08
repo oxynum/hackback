@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   private
 
   def check_token_and_ip
-    @user = User.where(authentication_token: params[:id]).first
-    if user.ip_address != request.remote_ip
-      render nothing: true, status: :unauthorized and return if user.nil?
+    @user = User.where(code: params[:user_id], authentication_token: params[:token]).first
+    if @user.nil? || @user.ip_address != request.remote_ip
+      render nothing: true, status: :unauthorized and return
     end
   end
 
