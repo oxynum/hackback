@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [] do 
     post 'authenticate'
   end
- 
+
+  resources :movies, only: :index
+  resources :series, only: :index
+
 end

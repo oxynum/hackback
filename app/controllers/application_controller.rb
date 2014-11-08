@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-Token'
     headers['Access-Control-Max-Age'] = "1728000"
   end
+
+  protected
+
+  def check_token_and_ip
+    @user = User.where(code: params[:code]||params[:user_id], authentication_token: params[:token]).first
+    if @user.nil? || @user.ip_address != request.remote_ip
+      render nothing: true, status: :unauthorized and return
+    end
+  end
 end

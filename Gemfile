@@ -44,3 +44,5 @@ group :development do
   gem 'capistrano-bundler', github: 'capistrano/bundler'
   gem 'capistrano-thin'
 end
+
+gem 'httparty'
