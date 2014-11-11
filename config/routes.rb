@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   resources :movies, only: :index
   resources :series, only: :index
+  resources :animes, only: :index
 
 end
