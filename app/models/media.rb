@@ -21,7 +21,8 @@ class Media
   end
 
   def self.limit_entries hash
-    hash['feed']['entry'].slice! hash['feed']['entry'].keys[0..50]
+    hash['entry'] = hash['entry'][0..59]
+    hash
   end
 
     ##
