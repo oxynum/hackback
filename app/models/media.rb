@@ -20,6 +20,10 @@ class Media
     end
   end
 
+  def self.limit_entries hash
+    hash['feed']['entry'].slice! hash['feed']['entry'].keys[0..50]
+  end
+
     ##
   # @!method check_symbol_parameters(parameters)
   #   Check if the parameters are strings or symbols

@@ -3,6 +3,6 @@ class SeriesController < ApplicationController
   before_action :check_token_and_ip
 
   def index
-    render json: Media.series
+    render json: Media.limit_entries(Media.series)
   end
 end
