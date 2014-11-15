@@ -3,6 +3,6 @@ class MoviesController < ApplicationController
   before_action :check_token_and_ip
 
   def index
-    render json: Media.limit_entries(Media.movies)
+    render json: Kaminari.paginate_array(Media.movies).page(params[:page]).per(60)
   end
 end

@@ -31,6 +31,8 @@ gem 'spring',        group: :development
 # Use thin as the app server
 gem 'thin'
 
+gem 'kaminari'
+
 group :development do 
   gem "better_errors"
   gem "binding_of_caller"
