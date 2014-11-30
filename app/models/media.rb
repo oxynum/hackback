@@ -7,12 +7,14 @@ class Media
         res = HTTParty.get(LINKS[media.to_s]).to_hash
         res['feed']['entry']
       end
+      self.class.send(:define_method, "#{media}_json".to_sym) do 
+        HTTParty.get(LINKS[media.to_s]).to_hash['feed']
+      end
     end
   end
 
   public
   add_media :series, :movies, :animes, :musics
-
 
     ##
   # @!method check_symbol_parameters(parameters)

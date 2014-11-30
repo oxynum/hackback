@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     post 'authenticate'
   end
 
-  resources :movies, only: :index
-  resources :series, only: :index
-  resources :animes, only: :index
+  resources :movies, :series, :animes, only: :index do 
+    collection do
+      get 'updated_at'
+    end
+  end
 
 end
