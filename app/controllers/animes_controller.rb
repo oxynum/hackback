@@ -1,7 +1,12 @@
 class AnimesController < ApplicationController
   before_action :check_token_and_ip
   def index
-    render json: Kaminari.paginate_array(Media.animes).page(params[:page]).per(60)
+    @animes = Media.animes
+    if params[:page]
+      render json: Kaminari.paginate_array(@animes).page(params[:page]).per(60)
+    else
+      render json: @animes
+    end
   end
 
   def updated_at
